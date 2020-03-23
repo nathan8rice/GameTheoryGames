@@ -40,7 +40,13 @@ public class Nim
     else
     {
       //Create randomly generated game
-      game = getRandomGame();
+      System.out.println("Choose a level of difficulty:");
+      System.out.println("Enter:\n"+
+                         "(1) Easy\n"+
+                         "(2) Medium\n"+
+                         "(3) Hard");
+      input = getIntInput(1,3);
+      game = getRandomGame(input);
     }
     System.out.println("Alright, here's our game:");
     printGame(game);
@@ -203,14 +209,15 @@ public class Nim
   /**
   * Creates randomly generated game
   *
-  * @return     randomly generated game
+  * @param level  level of difficulty for this random game
+  * @return       randomly generated game
   */
-  private static int[] getRandomGame()
+  private static int[] getRandomGame(int level)
   {
-    int[] game = new int[rand.nextInt(8)+3];
+    int[] game = new int[rand.nextInt(3)+3*level];
     for(int i = 0; i < game.length; i++)
     {
-      game[i] = rand.nextInt(20)+1;
+      game[i] = rand.nextInt(5*level)+1;
     }
     return game;
   }
